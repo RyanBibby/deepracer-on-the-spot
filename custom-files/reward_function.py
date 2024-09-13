@@ -11,6 +11,8 @@ def reward_function(params):
     reward = 1e-3
 
     if all_wheels_on_track and (0.5 * track_width - distance_from_center) >= 0.05:
-        reward = 31 - abs_steering
+        reward = 31
+    if abs_steering > 0:
+        reward -= 15
 
     return float(reward)
